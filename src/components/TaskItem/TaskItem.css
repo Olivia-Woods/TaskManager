@@ -1,8 +1,28 @@
+/* Task Container */
+.task-item {
+  background-color: white;
+  margin-bottom: 10px;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.task-item.done {
+  background-color: #d4f8d4; /* Light green for completed tasks */
+}
+
 /* Task Text and Timestamp */
 .task-text {
   font-size: 1rem;
   color: #333;
   margin-bottom: 5px;
+  text-decoration: none;
+}
+
+.task-item.done .task-text {
+  text-decoration: line-through; /* Strike-through for completed tasks */
+  color: #666; /* Dim the text color */
 }
 
 .timestamp {
@@ -18,7 +38,8 @@
 }
 
 .edit-button,
-.delete-button {
+.delete-button,
+.done-button {
   padding: 5px 10px;
   border: none;
   border-radius: 5px;
@@ -27,6 +48,7 @@
   transition: background-color 0.3s ease;
 }
 
+/* Edit Button */
 .edit-button {
   background-color: #ff93d5;
   color: white;
@@ -36,6 +58,7 @@
   background-color: #e61f93;
 }
 
+/* Delete Button */
 .delete-button {
   background-color: #ff4d4d;
   color: white;
@@ -43,4 +66,28 @@
 
 .delete-button:hover {
   background-color: #cc0000;
+}
+
+/* Done Button */
+.done-button {
+  background-color: #28a745; /* Green for marking as done */
+  color: white;
+}
+
+.done-button:hover {
+  background-color: #218838; /* Darker green on hover */
+}
+
+/* Task Text and Timestamp */
+.task-text {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 5px; /* Add spacing from timestamp */
+}
+
+.timestamp {
+  font-size: 0.8rem; /* Slightly smaller for the timestamp */
+  color: #888;
+  display: block; /* Ensure it's on a new line */
+  margin-top: 5px;
 }

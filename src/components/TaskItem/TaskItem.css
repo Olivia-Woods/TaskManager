@@ -81,14 +81,15 @@
 
 /* Delete Button */
 .delete-button {
-  background-color: transparent; /* Transparent for emoji buttons */
-  color: inherit;
+  background-color: transparent; /* Transparent background */
+  color: inherit; /* Inherit text color */
   font-size: 1.2rem; /* Adjust emoji size */
   line-height: 1; /* Maintain proper alignment */
-  cursor: pointer;
+  cursor: pointer; /* Pointer cursor on hover */
   padding: 0; /* Remove extra padding */
 }
 
 .delete-button:hover {
   transform: scale(1.2); /* Slightly enlarge emoji on hover */
+  background-color: transparent; /* Ensure no background is applied */
 }

@@ -1,58 +1,30 @@
-import React, { useState } from "react";
+import React from "react";
 import "./TaskItem.css";
 
-const TaskItem = ({ task, onDelete, onEdit, onToggleDone }) => {
-  const [isEditing, setIsEditing] = useState(false); // Edit Mode Toggle
-  const [newText, setNewText] = useState(task.text); // Temp State for Editing
-
-  // Save Changes to Task Text
-  const handleSave = () => {
-    if (newText.trim()) {
-      onEdit(task.id, newText); // Update Task via Parent
-      setIsEditing(false); // Exit Edit Mode
-    } else {
-      alert("Task text cannot be empty!");
-    }
-  };
-
-  const formattedDate = new Date(task.timestamp).toLocaleString(); // Format Date
+const TaskItem = ({ task, onDelete, onToggleDone, onMoveUp, onMoveDown }) => {
+  const formattedDate = new Date(task.timestamp).toLocaleString();
 
   return (
     <li className={`task-item ${task.isDone ? "done" : ""}`}>
-      {isEditing ? (
-        <div>
-          <input
-            type="text"
-            value={newText}
-            onChange={(e) => setNewText(e.target.value)} // Handle Input Change
-          />
-          <button onClick={handleSave} className="save-button">
-            Save
+      <div>
+        <span className="task-text">{task.text}</span> {/* Task text */}
+        <br />
+        <small className="timestamp">{formattedDate}</small> {/* Timestamp */}
+        <div className="buttons">
+          <button onClick={onMoveUp} className="move-button">
+            ↑
           </button>
-          <button onClick={() => setIsEditing(false)} className="cancel-button">
-            Cancel
+          <button onClick={onMoveDown} className="move-button">
+            ↓
+          </button>
+          <button onClick={onToggleDone} className="done-button">
+            {task.isDone ? "Undo" : "Done"}
+          </button>
+          <button onClick={onDelete} className="delete-button">
+            Delete
           </button>
         </div>
-      ) : (
-        <div>
-          <span className="task-text">{task.text}</span>
-          <small className="timestamp">{formattedDate}</small>
-          <div className="buttons">
-            <button onClick={() => setIsEditing(true)} className="edit-button">
-              Edit
-            </button>
-            <button onClick={onDelete} className="delete-button">
-              Delete
-            </button>
-            <button
-              onClick={() => onToggleDone(task.id)}
-              className="done-button"
-            >
-              {task.isDone ? "Undo" : "Done"}
-            </button>
-          </div>
-        </div>
-      )}
+      </div>
     </li>
   );
 };

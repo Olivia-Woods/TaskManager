@@ -4,40 +4,23 @@ import TaskList from "./components/TaskList/TaskList";
 import "./styles/App.css";
 
 function App() {
-  // Load Tasks from localStorage
   const [tasks, setTasks] = useState(() => {
     const savedTasks = localStorage.getItem("tasks");
     return savedTasks ? JSON.parse(savedTasks) : [];
   });
 
-  // Save Tasks to localStorage When They Change
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
 
-  // Add New Task
   const addTask = (newTask) => {
-    setTasks((prevTasks) => [
-      ...prevTasks,
-      { ...newTask, isDone: false }, // Default is not done
-    ]);
+    setTasks((prevTasks) => [...prevTasks, { ...newTask, isDone: false }]);
   };
 
-  // Delete a Task by ID
   const deleteTask = (taskId) => {
     setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
   };
 
-  // Edit a Task by ID
-  const editTask = (taskId, newText) => {
-    setTasks((prevTasks) =>
-      prevTasks.map((task) =>
-        task.id === taskId ? { ...task, text: newText } : task
-      )
-    );
-  };
-
-  // Toggle Task Completion
   const toggleTaskDone = (taskId) => {
     setTasks((prevTasks) =>
       prevTasks.map((task) =>
@@ -46,23 +29,40 @@ function App() {
     );
   };
 
+  const moveTask = (index, direction) => {
+    setTasks((prevTasks) => {
+      const newTasks = [...prevTasks];
+      const targetIndex = index + direction;
+
+      if (targetIndex < 0 || targetIndex >= newTasks.length) return newTasks; // Prevent out-of-bounds move
+
+      // Swap the tasks
+      [newTasks[index], newTasks[targetIndex]] = [
+        newTasks[targetIndex],
+        newTasks[index],
+      ];
+
+      return newTasks;
+    });
+  };
+
   return (
     <div className="app">
       <h1>Task Manager</h1>
       <TaskForm
         onAdd={(task) =>
           addTask({
-            id: Date.now(), // Unique ID
-            text: task, // Task Text
-            timestamp: Date.now(), // Creation Time
+            id: Date.now(),
+            text: task,
+            timestamp: Date.now(),
           })
         }
       />
       <TaskList
         tasks={tasks}
         onDelete={deleteTask}
-        onEdit={editTask}
         onToggleDone={toggleTaskDone}
+        onMove={moveTask}
       />
     </div>
   );

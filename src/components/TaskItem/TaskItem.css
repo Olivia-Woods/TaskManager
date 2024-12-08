@@ -1,33 +1,38 @@
-/* Task Container */
+/* Task Item Container */
 .task-item {
-  background-color: white;
-  margin-bottom: 10px;
-  padding: 15px;
+  background-color: #fff; /* Default background */
+  padding: 10px 15px;
+  border: 1px solid #ddd;
   border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transitions */
 }
 
 .task-item.done {
-  background-color: #d4f8d4; /* Light green for completed tasks */
+  background-color: #d4f8e8; /* Light green background for completed tasks */
+  border-color: #4caf50; /* Green border for completed tasks */
 }
 
-/* Task Text and Timestamp */
+/* Task Text */
 .task-text {
   font-size: 1rem;
   color: #333;
   margin-bottom: 5px;
-  text-decoration: none;
+  transition: color 0.3s ease, text-decoration-color 0.3s ease; /* Smooth text transition */
 }
 
 .task-item.done .task-text {
   text-decoration: line-through; /* Strike-through for completed tasks */
-  color: #666; /* Dim the text color */
+  text-decoration-color: #4caf50; /* Green strike-through */
+  color: #4caf50; /* Green text color for completed tasks */
 }
 
+/* Timestamp */
 .timestamp {
   font-size: 0.9rem;
   color: #888;
+  display: block;
+  margin-top: 5px;
 }
 
 /* Buttons */
@@ -37,9 +42,9 @@
   gap: 10px;
 }
 
-.edit-button,
-.delete-button,
-.done-button {
+.move-button,
+.done-button,
+.delete-button {
   padding: 5px 10px;
   border: none;
   border-radius: 5px;
@@ -48,17 +53,24 @@
   transition: background-color 0.3s ease;
 }
 
-/* Edit Button */
-.edit-button {
+.done-button {
+  background-color: #4caf50;
+  color: white;
+}
+
+.done-button:hover {
+  background-color: #388e3c;
+}
+
+.move-button {
   background-color: #ff93d5;
   color: white;
 }
 
-.edit-button:hover {
+.move-button:hover {
   background-color: #e61f93;
 }
 
-/* Delete Button */
 .delete-button {
   background-color: #ff4d4d;
   color: white;
@@ -66,28 +78,4 @@
 
 .delete-button:hover {
   background-color: #cc0000;
-}
-
-/* Done Button */
-.done-button {
-  background-color: #28a745; /* Green for marking as done */
-  color: white;
-}
-
-.done-button:hover {
-  background-color: #218838; /* Darker green on hover */
-}
-
-/* Task Text and Timestamp */
-.task-text {
-  font-size: 1rem;
-  color: #333;
-  margin-bottom: 5px; /* Add spacing from timestamp */
-}
-
-.timestamp {
-  font-size: 0.8rem; /* Slightly smaller for the timestamp */
-  color: #888;
-  display: block; /* Ensure it's on a new line */
-  margin-top: 5px;
 }

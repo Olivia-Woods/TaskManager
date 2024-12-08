@@ -4,23 +4,31 @@ import TaskList from "./components/TaskList/TaskList";
 import "./styles/App.css";
 
 function App() {
+  // Retrieve tasks from localStorage on initial load
   const [tasks, setTasks] = useState(() => {
     const savedTasks = localStorage.getItem("tasks");
     return savedTasks ? JSON.parse(savedTasks) : [];
   });
 
+  // Save tasks to localStorage whenever the `tasks` state changes
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
 
+  // Add a new task
   const addTask = (newTask) => {
-    setTasks((prevTasks) => [...prevTasks, { ...newTask, isDone: false }]);
+    setTasks((prevTasks) => [
+      ...prevTasks,
+      { ...newTask, isDone: false }, // Ensure "isDone" is initialized to false
+    ]);
   };
 
+  // Delete a task by its ID
   const deleteTask = (taskId) => {
     setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
   };
 
+  // Toggle the "done" status of a task
   const toggleTaskDone = (taskId) => {
     setTasks((prevTasks) =>
       prevTasks.map((task) =>
@@ -29,12 +37,14 @@ function App() {
     );
   };
 
+  // Move a task up or down in the list
   const moveTask = (index, direction) => {
     setTasks((prevTasks) => {
       const newTasks = [...prevTasks];
       const targetIndex = index + direction;
 
-      if (targetIndex < 0 || targetIndex >= newTasks.length) return newTasks; // Prevent out-of-bounds move
+      // Prevent out-of-bounds moves
+      if (targetIndex < 0 || targetIndex >= newTasks.length) return newTasks;
 
       // Swap the tasks
       [newTasks[index], newTasks[targetIndex]] = [
@@ -49,6 +59,7 @@ function App() {
   return (
     <div className="app">
       <h1>Task Manager</h1>
+      {/* Form to add new tasks */}
       <TaskForm
         onAdd={(task) =>
           addTask({
@@ -58,6 +69,7 @@ function App() {
           })
         }
       />
+      {/* List to display, delete, toggle "done", and move tasks */}
       <TaskList
         tasks={tasks}
         onDelete={deleteTask}

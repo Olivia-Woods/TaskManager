@@ -5,6 +5,9 @@
   border: 1px solid #ddd;
   border-radius: 5px;
   margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transitions */
 }
 
@@ -13,12 +16,17 @@
   border-color: #4caf50; /* Green border for completed tasks */
 }
 
-/* Task Text */
+/* Task Content */
+.task-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
 .task-text {
   font-size: 1rem;
   color: #333;
-  margin-bottom: 5px;
-  transition: color 0.3s ease, text-decoration-color 0.3s ease; /* Smooth text transition */
+  transition: color 0.3s ease, text-decoration-color 0.3s ease;
 }
 
 .task-item.done .task-text {
@@ -27,21 +35,19 @@
   color: #4caf50; /* Green text color for completed tasks */
 }
 
-/* Timestamp */
 .timestamp {
   font-size: 0.9rem;
   color: #888;
-  display: block;
   margin-top: 5px;
 }
 
 /* Buttons */
 .buttons {
-  margin-top: 10px;
   display: flex;
   gap: 10px;
 }
 
+/* Shared Button Styles */
 .move-button,
 .done-button,
 .delete-button {
@@ -50,18 +56,10 @@
   border-radius: 5px;
   font-size: 0.9rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.done-button {
-  background-color: #4caf50;
-  color: white;
-}
-
-.done-button:hover {
-  background-color: #388e3c;
-}
-
+/* Move Buttons */
 .move-button {
   background-color: #ff93d5;
   color: white;
@@ -71,11 +69,26 @@
   background-color: #e61f93;
 }
 
-.delete-button {
-  background-color: #ff4d4d;
+/* Done Button */
+.done-button {
+  background-color: #4caf50;
   color: white;
 }
 
+.done-button:hover {
+  background-color: #388e3c;
+}
+
+/* Delete Button */
+.delete-button {
+  background-color: transparent; /* Transparent for emoji buttons */
+  color: inherit;
+  font-size: 1.2rem; /* Adjust emoji size */
+  line-height: 1; /* Maintain proper alignment */
+  cursor: pointer;
+  padding: 0; /* Remove extra padding */
+}
+
 .delete-button:hover {
-  background-color: #cc0000;
+  transform: scale(1.2); /* Slightly enlarge emoji on hover */
 }

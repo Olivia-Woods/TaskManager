@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import TaskForm from "./components/TaskForm/TaskForm";
+import TaskList from "./components/TaskList/TaskList";
 import "./styles/App.css";
 
 function App() {
@@ -22,17 +23,8 @@ function App() {
       {/* TaskForm for adding tasks */}
       <TaskForm onAdd={addTask} />
 
-      {/* Task list rendering */}
-      <ul className="task-list">
-        {tasks.map((task, index) => (
-          <li key={index} className="task-item">
-            {task}
-            <button onClick={() => deleteTask(index)} className="delete-button">
-              Delete
-            </button>
-          </li>
-        ))}
-      </ul>
+      {/* TaskList for rendering tasks */}
+      <TaskList tasks={tasks} onDelete={deleteTask} />
     </div>
   );
 }

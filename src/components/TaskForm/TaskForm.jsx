@@ -1,36 +1,27 @@
-import React, { useState } from "react"; // Core library that allows you to build UI components. Import it in every component to use JSX.
-// State is like a memory for your component - it stores dynamic data that can change over time.
+import React, { useState } from "react";
 
 const TaskForm = ({ onAdd }) => {
-  // onAdd is a property passed to the TaskForm component from its parent (App.jsx).
-  // It’s a function that allows TaskForm to “communicate” with the parent.
-  // Whenever a new task is submitted, TaskForm calls onAdd to pass the task back to the parent.
-
   const [task, setTask] = useState("");
-  // This line sets up state for the input field.
 
   const handleSubmit = (e) => {
-    // Handles what happens when the form is submitted.
-    e.preventDefault(); // Prevents the default form behavior (e.g., refreshing the page when the form is submitted).
+    e.preventDefault();
     if (task.trim()) {
-      // Ensures the task isn’t just empty spaces. trim() removes extra spaces before or after the text.
-      onAdd(task); // Calls the onAdd function (passed from the parent) and sends the new task as an argument. This tells the parent component (App.jsx) to add the task to the list.
-      setTask(""); // Clears the input field by resetting the state to an empty string.
+      onAdd(task); // Pass the task back to the parent component
+      setTask(""); // Clear the input field
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} style={formStyle}>
+    <form onSubmit={handleSubmit}>
       <input
         type="text"
         value={task}
-        onChange={(e) => setTask(e.target.value)} // Updates the task state every time the user types something.
+        onChange={(e) => setTask(e.target.value)}
         placeholder="Enter Task"
-        style={inputStyle}
       />
-      <button type="submit" style={buttonStyle}>
-        Add Task
-      </button>
+      <button type="submit">Add Task</button>
     </form>
   );
 };
+
+export default TaskForm;

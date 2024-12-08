@@ -4,7 +4,7 @@ import "./TaskList.css";
 
 const TaskList = ({ tasks, onDelete }) => {
   if (tasks.length === 0) {
-    return <p>No tasks yet. Add one above!</p>;
+    return <p>No tasks available. Add one above!</p>;
   }
 
   return (

@@ -1,33 +1,54 @@
-import React from "react";
-// Import React to create a functional component.
-
+import React, { useState } from "react";
 import "./TaskItem.css";
-// Import the CSS file for styling the TaskItem component.
 
-const TaskItem = ({ task, onDelete }) => {
-  // TaskItem is a functional component.
-  // It receives two props:
-  // 1. `task`: The task text to display, passed from TaskList.
-  // 2. `onDelete`: A function to handle deleting this specific task.
+const TaskItem = ({ task, onDelete, onEdit }) => {
+  const [isEditing, setIsEditing] = useState(false); // Track if the task is being edited
+  const [newText, setNewText] = useState(task.text); // Temporary state for the edited text
+
+  const handleSave = () => {
+    if (newText.trim()) {
+      onEdit(task.id, newText); // Pass the updated text to the parent along with the task ID
+      setIsEditing(false); // Exit edit mode
+    }
+  };
+
+  const formattedDate = new Date(task.timestamp).toLocaleString(); // Format the timestamp
 
   return (
     <li className="task-item">
-      {/* The container for the task. The `className` is used for applying styles */}
-
-      <span>{task}</span>
-      {/* Displays the task text inside a <span>. */}
-
-      <button onClick={onDelete} className="delete-button">
-        {/* A button for deleting the task. */}
-        Delete
-        {/* Clicking this button triggers the `onDelete` function passed as a prop. */}
-      </button>
+      {isEditing ? (
+        <div>
+          <input
+            type="text"
+            value={newText}
+            onChange={(e) => setNewText(e.target.value)} // Update newText as user types
+          />
+          <button onClick={handleSave} className="save-button">
+            Save
+          </button>
+          <button onClick={() => setIsEditing(false)} className="cancel-button">
+            Cancel
+          </button>
+        </div>
+      ) : (
+        <div>
+          <div>
+            <span className="task-text">{task.text}</span>
+            <small className="timestamp">{formattedDate}</small>{" "}
+            {/* Display the timestamp */}
+          </div>
+          <div className="buttons">
+            <button onClick={() => setIsEditing(true)} className="edit-button">
+              Edit
+            </button>
+            <button onClick={onDelete} className="delete-button">
+              Delete
+            </button>
+          </div>
+        </div>
+      )}
     </li>
   );
 };
 
 export default TaskItem;
-// Exports the TaskItem component so it can be imported and used in TaskList.
-
-// TaskItem is responsible for rendering a single task and providing a way to delete it.
-// It’s a stateless component because it doesn’t manage its own state.

@@ -1,28 +1,46 @@
-.task-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
+/* Task Text and Timestamp */
+.task-text {
+  font-size: 1rem;
+  color: #333;
   margin-bottom: 5px;
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 5px;
 }
 
-.task-item span {
-  flex: 1;
+.timestamp {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+/* Buttons */
+.buttons {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.edit-button,
+.delete-button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.edit-button {
+  background-color: #ff93d5;
+  color: white;
+}
+
+.edit-button:hover {
+  background-color: #e61f93;
 }
 
 .delete-button {
-  padding: 5px 10px;
-  font-size: 14px;
   background-color: #ff4d4d;
   color: white;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
 }
 
 .delete-button:hover {
-  background-color: #d43f3f;
+  background-color: #cc0000;
 }

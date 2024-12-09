@@ -1,31 +1,40 @@
 import React from "react";
 import "./TaskItem.css";
 
-const TaskItem = ({ task, onDelete, onToggleDone, onMoveUp, onMoveDown }) => {
-  const formattedDate = new Date(task.timestamp).toLocaleString(); // Format the timestamp
+const TaskItem = ({
+  task,
+  onDelete,
+  onToggleDone,
+  onTogglePriority,
+  onMoveUp,
+  onMoveDown,
+}) => {
+  const formattedDate = new Date(task.timestamp).toLocaleString();
 
   return (
-    <li className={`task-item ${task.isDone ? "done" : ""}`}>
+    <li
+      className={`task-item ${task.isDone ? "done" : ""} ${
+        task.isPriority ? "priority" : ""
+      }`}
+    >
       <div className="task-content">
-        {/* Task Text */}
         <span className="task-text">{task.text}</span>
-        {/* Timestamp */}
+        <br />
         <small className="timestamp">{formattedDate}</small>
       </div>
       <div className="buttons">
-        {/* Move Up Button */}
         <button onClick={onMoveUp} className="move-button">
           ↑
         </button>
-        {/* Move Down Button */}
         <button onClick={onMoveDown} className="move-button">
           ↓
         </button>
-        {/* Toggle Done Button */}
         <button onClick={onToggleDone} className="done-button">
           {task.isDone ? "Undo" : "Done"}
         </button>
-        {/* Delete Button */}
+        <button onClick={onTogglePriority} className="priority-button">
+          ⭐
+        </button>
         <button onClick={onDelete} className="delete-button">
           🗑️
         </button>

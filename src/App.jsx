@@ -19,7 +19,7 @@ function App() {
   const addTask = (newTask) => {
     setTasks((prevTasks) => [
       ...prevTasks,
-      { ...newTask, isDone: false }, // Ensure "isDone" is initialized to false
+      { ...newTask, isDone: false, isPriority: false }, // Ensure "isDone" and "isPriority" are initialized to false
     ]);
   };
 
@@ -33,6 +33,15 @@ function App() {
     setTasks((prevTasks) =>
       prevTasks.map((task) =>
         task.id === taskId ? { ...task, isDone: !task.isDone } : task
+      )
+    );
+  };
+
+  // Toggle the "priority" status of a task
+  const togglePriority = (taskId) => {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task.id === taskId ? { ...task, isPriority: !task.isPriority } : task
       )
     );
   };
@@ -69,11 +78,12 @@ function App() {
           })
         }
       />
-      {/* List to display, delete, toggle "done", and move tasks */}
+      {/* List to display, delete, toggle "done", toggle "priority", and move tasks */}
       <TaskList
         tasks={tasks}
         onDelete={deleteTask}
         onToggleDone={toggleTaskDone}
+        onTogglePriority={togglePriority}
         onMove={moveTask}
       />
     </div>

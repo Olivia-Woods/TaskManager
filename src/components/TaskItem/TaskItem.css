@@ -1,8 +1,8 @@
 /* Task Item Container */
 .task-item {
-  background-color: #fff; /* Default background */
+  background-color: #fff; /* Default white background */
   padding: 10px 15px;
-  border: 1px solid #ddd;
+  border: 1px solid #ddd; /* Default border */
   border-radius: 5px;
   margin-bottom: 10px;
   display: flex;
@@ -11,9 +11,16 @@
   transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transitions */
 }
 
+/* Task Item When Done */
 .task-item.done {
-  background-color: #d4f8e8; /* Light green background for completed tasks */
-  border-color: #4caf50; /* Green border for completed tasks */
+  background-color: #d4f8e8; /* Light green background */
+  border-color: #4caf50; /* Green border */
+}
+
+/* Task Item When Priority */
+.task-item.priority {
+  background-color: #ffeffc; /* Light pink background */
+  border-color: #e61f93; /* Dark pink border */
 }
 
 /* Task Content */
@@ -35,13 +42,18 @@
   color: #4caf50; /* Green text color for completed tasks */
 }
 
+.task-item.priority .task-text {
+  color: #e61f93; /* White text for priority tasks */
+}
+
+/* Timestamp */
 .timestamp {
   font-size: 0.9rem;
   color: #888;
   margin-top: 5px;
 }
 
-/* Buttons */
+/* Buttons Section */
 .buttons {
   display: flex;
   gap: 10px;
@@ -50,6 +62,7 @@
 /* Shared Button Styles */
 .move-button,
 .done-button,
+.priority-button,
 .delete-button {
   padding: 5px 10px;
   border: none;
@@ -77,6 +90,22 @@
 
 .done-button:hover {
   background-color: #388e3c;
+}
+
+/* Priority Button */
+.priority-button {
+  background-color: transparent; /* Transparent background */
+  border: none; /* Remove border */
+  font-size: 1.5rem; /* Adjust emoji size */
+  line-height: 1; /* Ensure proper alignment */
+  cursor: pointer; /* Pointer cursor for interactivity */
+  padding: 0; /* Remove padding */
+  transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+.priority-button:hover {
+  transform: scale(1.2); /* Slightly enlarge emoji on hover */
+  background-color: transparent; /* Ensure no background is applied */
 }
 
 /* Delete Button */

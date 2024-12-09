@@ -5,11 +5,12 @@
   box-sizing: border-box;
 }
 
+/* Root Variables and Defaults */
 :root {
-  font-family: Inter, Arial, sans-serif;
+  font-family: "Inter", Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  background-color: #ffeffc; /* Your background color */
+  background-color: #ffeffc; /* Global background color */
   color: #333; /* Default text color */
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -21,15 +22,15 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 320px;
+  min-width: 320px; /* Ensure mobile responsiveness */
   min-height: 100vh;
 }
 
 /* Typography */
 h1 {
   font-size: 2.5rem;
-  font-weight: bold;
-  color: #ff93d5; /* Main header color */
+  font-weight: bold; /* Bold header */
+  color: #ff93d5; /* Header color */
   margin-bottom: 20px;
   text-align: center;
 }
@@ -38,6 +39,7 @@ p {
   font-size: 1rem;
   color: #666;
   margin-bottom: 10px;
+  line-height: 1.6;
 }
 
 /* Links */
@@ -62,10 +64,11 @@ button {
   background-color: #ff93d5;
   color: white;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 button:hover {
   background-color: #e61f93;
+  transform: scale(1.02); /* Slight animation on hover */
 }
 
 /* Inputs */

@@ -1,16 +1,25 @@
 import React, { useState } from "react";
 
+// TaskForm Component: Handles the creation of a new task.
 const TaskForm = ({ onAdd }) => {
-  const [task, setTask] = useState(""); // Track Input Value
+  const [task, setTask] = useState(""); // State for task input
 
-  // Handle Form Submission
+  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     if (task.trim()) {
-      onAdd(task); // Pass the task text to the parent.
-      setTask(""); // Clear Input Field
+      // Call the parent function to add the new task
+      onAdd({
+        id: Date.now(),
+        text: task.trim(), // Ensure clean input
+        timestamp: Date.now(),
+        isDone: false,
+        isPriority: false,
+        subtasks: [], // Initialize an empty subtasks array
+      });
+      setTask(""); // Clear the input field
     } else {
-      alert("Task cannot be empty!"); // Notify User
+      alert("Task cannot be empty!"); // Simple validation
     }
   };
 
@@ -19,8 +28,9 @@ const TaskForm = ({ onAdd }) => {
       <input
         type="text"
         value={task}
-        onChange={(e) => setTask(e.target.value)} // Update State on Input
-        placeholder="Enter your task here..." // User Guidance
+        onChange={(e) => setTask(e.target.value)}
+        placeholder="Enter your task..."
+        aria-label="Task Input" // Accessibility
       />
       <button type="submit">Add Task</button>
     </form>

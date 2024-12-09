@@ -28,12 +28,13 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  align-items: flex-start; /* Align text to the left */
 }
 
 .task-text {
   font-size: 1rem;
   color: #333;
-  transition: color 0.3s ease, text-decoration-color 0.3s ease;
+  transition: color 0.3s ease, text-decoration-color 0.3s ease; /* Smooth transitions */
 }
 
 .task-item.done .task-text {
@@ -43,20 +44,20 @@
 }
 
 .task-item.priority .task-text {
-  color: #e61f93; /* White text for priority tasks */
+  color: #e61f93; /* Pink text for priority tasks */
 }
 
 /* Timestamp */
 .timestamp {
   font-size: 0.9rem;
-  color: #888;
+  color: #888; /* Subdued color for timestamp */
   margin-top: 5px;
 }
 
 /* Buttons Section */
 .buttons {
   display: flex;
-  gap: 10px;
+  gap: 10px; /* Even spacing between buttons */
 }
 
 /* Shared Button Styles */
@@ -69,56 +70,129 @@
   border-radius: 5px;
   font-size: 0.9rem;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth interaction feedback */
 }
 
 /* Move Buttons */
 .move-button {
-  background-color: #ff93d5;
+  background-color: #ff93d5; /* Pink background */
   color: white;
 }
 
 .move-button:hover {
-  background-color: #e61f93;
+  background-color: #e61f93; /* Darker pink on hover */
+}
+
+.move-button:active {
+  background-color: #ff93d5; /* Reset background after click */
+  transform: scale(1); /* Reset scaling */
 }
 
 /* Done Button */
 .done-button {
-  background-color: #4caf50;
+  background-color: #4caf50; /* Green background */
   color: white;
 }
 
 .done-button:hover {
-  background-color: #388e3c;
+  background-color: #388e3c; /* Darker green on hover */
 }
 
 /* Priority Button */
 .priority-button {
-  background-color: transparent; /* Transparent background */
-  border: none; /* Remove border */
+  background-color: transparent; /* No background */
+  border: none; /* No border */
   font-size: 1.5rem; /* Adjust emoji size */
-  line-height: 1; /* Ensure proper alignment */
-  cursor: pointer; /* Pointer cursor for interactivity */
+  line-height: 1; /* Align properly */
+  cursor: pointer;
   padding: 0; /* Remove padding */
   transition: transform 0.3s ease; /* Smooth hover effect */
 }
 
 .priority-button:hover {
   transform: scale(1.2); /* Slightly enlarge emoji on hover */
-  background-color: transparent; /* Ensure no background is applied */
+  background-color: transparent; /* No background */
 }
 
 /* Delete Button */
 .delete-button {
-  background-color: transparent; /* Transparent background */
+  background-color: transparent; /* No background */
   color: inherit; /* Inherit text color */
   font-size: 1.2rem; /* Adjust emoji size */
   line-height: 1; /* Maintain proper alignment */
-  cursor: pointer; /* Pointer cursor on hover */
+  cursor: pointer;
   padding: 0; /* Remove extra padding */
 }
 
 .delete-button:hover {
   transform: scale(1.2); /* Slightly enlarge emoji on hover */
-  background-color: transparent; /* Ensure no background is applied */
+  background-color: transparent; /* No background */
+}
+
+/* Subtask List */
+.subtask-list {
+  list-style: none; /* Remove bullets */
+  padding-left: 20px; /* Indent subtasks for hierarchy */
+  margin-top: 10px; /* Space above subtasks */
+}
+
+/* Individual Subtasks */
+.subtask {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px; /* Spacing between subtasks */
+}
+
+.subtask.done .subtask-text {
+  text-decoration: line-through; /* Strike-through for completed subtasks */
+  color: #4caf50; /* Green for done subtasks */
+}
+
+.subtask-text {
+  margin-left: 10px; /* Space between checkbox and text */
+  font-size: 0.9rem;
+}
+
+/* Subtask Input */
+.subtask-input {
+  margin-top: 10px;
+  display: flex;
+  gap: 5px; /* Space between input and button */
+}
+
+.subtask-input input {
+  flex: 1;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+
+/* Add Subtask Button */
+.add-subtask-button {
+  background-color: transparent; /* Transparent background */
+  border: none;
+  font-size: 1.2rem; /* Adjust size */
+  cursor: pointer; /* Pointer cursor */
+  transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+.add-subtask-button:hover {
+  transform: scale(1.2); /* Slightly enlarge on hover */
+}
+
+/* Save Subtask Button */
+.save-subtask-button {
+  padding: 5px 10px;
+  background-color: #4caf50; /* Green background */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.save-subtask-button:hover {
+  background-color: #388e3c; /* Darker green on hover */
 }

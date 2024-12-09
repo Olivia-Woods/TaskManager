@@ -17,6 +17,7 @@
 /* App Title */
 h1 {
   font-size: 2.5rem;
+  font-weight: bold; /* Make the title visually impactful */
   color: #ff93d5; /* Main app header color */
   margin-bottom: 20px;
 }
@@ -29,9 +30,11 @@ h1 {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
-/* Read the Docs Section (optional, if not used, remove this) */
+/* Read the Docs Section */
 .read-the-docs {
   color: #888;
   margin-top: 20px;
   font-size: 0.9rem;
+  line-height: 1.6;
+  text-align: center;
 }

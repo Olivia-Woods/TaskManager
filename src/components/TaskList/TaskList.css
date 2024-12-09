@@ -1,19 +1,23 @@
+/* Task List Container */
 .task-list {
-  list-style: none;
+  list-style: none; /* Remove bullet points */
   padding: 0;
+  margin: 0;
 }
 
+/* Task Items */
 .task-item {
-  background-color: #fff;
-  margin-bottom: 10px;
+  background-color: #fff; /* Default white background */
+  margin-bottom: 10px; /* Spacing between items */
   padding: 15px;
   border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
+/* Remove extra margin for last task item */
 .task-item:last-child {
   margin-bottom: 0;
 }

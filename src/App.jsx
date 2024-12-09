@@ -3,56 +3,99 @@ import TaskForm from "./components/TaskForm/TaskForm";
 import TaskList from "./components/TaskList/TaskList";
 import "./styles/App.css";
 
+// App Component: The root component that manages the application's main state and functionality
 function App() {
-  // Retrieve tasks from localStorage on initial load
+  // State to manage the list of tasks
   const [tasks, setTasks] = useState(() => {
+    // Retrieve tasks from localStorage when the app loads
     const savedTasks = localStorage.getItem("tasks");
-    return savedTasks ? JSON.parse(savedTasks) : [];
+    return savedTasks ? JSON.parse(savedTasks) : []; // Parse tasks or initialize as an empty array
   });
 
-  // Save tasks to localStorage whenever the `tasks` state changes
+  // Effect to save tasks to localStorage whenever they change
   useEffect(() => {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
+    localStorage.setItem("tasks", JSON.stringify(tasks)); // Sync tasks with localStorage
   }, [tasks]);
 
-  // Add a new task
+  /**
+   * Add a new task to the list.
+   * @param {Object} newTask - The task object to add.
+   */
   const addTask = (newTask) => {
-    setTasks((prevTasks) => [
-      ...prevTasks,
-      { ...newTask, isDone: false, isPriority: false }, // Ensure "isDone" and "isPriority" are initialized to false
-    ]);
+    setTasks((prevTasks) => [...prevTasks, newTask]); // Append the new task to the current list
   };
 
-  // Delete a task by its ID
+  /**
+   * Add a subtask to a specific task by its ID.
+   * @param {number} taskId - The ID of the task to add the subtask to.
+   * @param {string} subtaskText - The text of the subtask to add.
+   */
+  const addSubtask = (taskId, subtaskText) => {
+    setTasks((prevTasks) =>
+      prevTasks.map(
+        (task) =>
+          task.id === taskId
+            ? {
+                ...task, // Spread existing task properties
+                subtasks: [
+                  ...task.subtasks, // Retain existing subtasks
+                  { id: Date.now(), text: subtaskText, isDone: false }, // Add new subtask
+                ],
+              }
+            : task // Keep other tasks unchanged
+      )
+    );
+  };
+
+  /**
+   * Delete a task by its ID.
+   * @param {number} taskId - The ID of the task to delete.
+   */
   const deleteTask = (taskId) => {
-    setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
+    setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId)); // Remove the task
   };
 
-  // Toggle the "done" status of a task
+  /**
+   * Toggle the "done" status of a task.
+   * @param {number} taskId - The ID of the task to toggle.
+   */
   const toggleTaskDone = (taskId) => {
     setTasks((prevTasks) =>
-      prevTasks.map((task) =>
-        task.id === taskId ? { ...task, isDone: !task.isDone } : task
+      prevTasks.map(
+        (task) =>
+          task.id === taskId
+            ? { ...task, isDone: !task.isDone } // Flip the "isDone" property
+            : task // Keep other tasks unchanged
       )
     );
   };
 
-  // Toggle the "priority" status of a task
+  /**
+   * Toggle the "priority" status of a task.
+   * @param {number} taskId - The ID of the task to toggle.
+   */
   const togglePriority = (taskId) => {
     setTasks((prevTasks) =>
-      prevTasks.map((task) =>
-        task.id === taskId ? { ...task, isPriority: !task.isPriority } : task
+      prevTasks.map(
+        (task) =>
+          task.id === taskId
+            ? { ...task, isPriority: !task.isPriority } // Flip the "isPriority" property
+            : task // Keep other tasks unchanged
       )
     );
   };
 
-  // Move a task up or down in the list
+  /**
+   * Move a task up or down in the list.
+   * @param {number} index - The current index of the task in the list.
+   * @param {number} direction - The direction to move (-1 for up, 1 for down).
+   */
   const moveTask = (index, direction) => {
     setTasks((prevTasks) => {
-      const newTasks = [...prevTasks];
+      const newTasks = [...prevTasks]; // Create a shallow copy of the tasks array
       const targetIndex = index + direction;
 
-      // Prevent out-of-bounds moves
+      // Ensure the move is within bounds
       if (targetIndex < 0 || targetIndex >= newTasks.length) return newTasks;
 
       // Swap the tasks
@@ -61,30 +104,49 @@ function App() {
         newTasks[index],
       ];
 
-      return newTasks;
+      return newTasks; // Update state with the modified array
     });
   };
 
+  /**
+   * Toggle the "done" status of a subtask.
+   * @param {number} taskId - The ID of the parent task.
+   * @param {number} subtaskId - The ID of the subtask to toggle.
+   */
+  const toggleSubtaskDone = (taskId, subtaskId) => {
+    setTasks((prevTasks) =>
+      prevTasks.map(
+        (task) =>
+          task.id === taskId
+            ? {
+                ...task, // Spread existing task properties
+                subtasks: task.subtasks.map(
+                  (subtask) =>
+                    subtask.id === subtaskId
+                      ? { ...subtask, isDone: !subtask.isDone } // Flip "isDone" for the subtask
+                      : subtask // Keep other subtasks unchanged
+                ),
+              }
+            : task // Keep other tasks unchanged
+      )
+    );
+  };
+
+  // Render the main application
   return (
     <div className="app">
       <h1>Task Manager</h1>
-      {/* Form to add new tasks */}
-      <TaskForm
-        onAdd={(task) =>
-          addTask({
-            id: Date.now(),
-            text: task,
-            timestamp: Date.now(),
-          })
-        }
-      />
-      {/* List to display, delete, toggle "done", toggle "priority", and move tasks */}
+      {/* TaskForm Component: Allows the user to add new tasks */}
+      <TaskForm onAdd={addTask} />
+      {/* TaskList Component: Displays and manages all tasks */}
       <TaskList
         tasks={tasks}
         onDelete={deleteTask}
         onToggleDone={toggleTaskDone}
         onTogglePriority={togglePriority}
         onMove={moveTask}
+        onAddSubtask={addSubtask} // Handle adding subtasks
+        onToggleSubtask={toggleSubtaskDone} // Handle toggling subtask "done" status
       />
     </div>
   );

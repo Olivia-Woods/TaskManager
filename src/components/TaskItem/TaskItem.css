@@ -6,8 +6,9 @@
   border-radius: 5px;
   margin-bottom: 10px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Space out content */
   align-items: center;
+  position: relative; /* For additional positioning */
   transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transitions */
 }
 
@@ -25,7 +26,7 @@
 
 /* Task Content */
 .task-content {
-  flex: 1;
+  flex: 1; /* Take available space */
   display: flex;
   flex-direction: column;
   align-items: flex-start; /* Align text to the left */
@@ -47,17 +48,11 @@
   color: #e61f93; /* Pink text for priority tasks */
 }
 
-/* Timestamp */
-.timestamp {
-  font-size: 0.9rem;
-  color: #888; /* Subdued color for timestamp */
-  margin-top: 5px;
-}
-
 /* Buttons Section */
 .buttons {
   display: flex;
-  gap: 10px; /* Even spacing between buttons */
+  align-items: center;
+  gap: 8px; /* Adjusted gap for consistent spacing */
 }
 
 /* Shared Button Styles */
@@ -65,33 +60,32 @@
 .done-button,
 .priority-button,
 .delete-button {
-  padding: 5px 10px;
+  padding: 5px 10px; /* Consistent padding for all buttons */
   border: none;
-  border-radius: 5px;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth interaction feedback */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 0.9rem; /* Button font size */
+  cursor: pointer; /* Pointer cursor for interactivity */
+  height: 36px; /* Consistent height for all buttons */
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center content */
+  transition: transform 0.2s ease; /* Add smooth enlargement on hover */
 }
 
 /* Move Buttons */
 .move-button {
   background-color: #ff93d5; /* Pink background */
-  color: white;
+  color: white; /* White text */
 }
 
 .move-button:hover {
   background-color: #e61f93; /* Darker pink on hover */
 }
 
-.move-button:active {
-  background-color: #ff93d5; /* Reset background after click */
-  transform: scale(1); /* Reset scaling */
-}
-
 /* Done Button */
 .done-button {
   background-color: #4caf50; /* Green background */
-  color: white;
+  color: white; /* White text */
 }
 
 .done-button:hover {
@@ -101,98 +95,33 @@
 /* Priority Button */
 .priority-button {
   background-color: transparent; /* No background */
-  border: none; /* No border */
-  font-size: 1.5rem; /* Adjust emoji size */
-  line-height: 1; /* Align properly */
-  cursor: pointer;
-  padding: 0; /* Remove padding */
-  transition: transform 0.3s ease; /* Smooth hover effect */
+  color: #ff93d5; /* Pink text */
+  height: 36px; /* Match size with other buttons */
+  width: 36px; /* Match width for consistency */
 }
 
 .priority-button:hover {
-  transform: scale(1.2); /* Slightly enlarge emoji on hover */
-  background-color: transparent; /* No background */
+  transform: scale(1.1); /* Slight enlargement */
+  background-color: transparent; /* No background change */
+}
+
+.priority-button:active {
+  transform: none; /* Prevent click effects */
 }
 
 /* Delete Button */
 .delete-button {
   background-color: transparent; /* No background */
-  color: inherit; /* Inherit text color */
-  font-size: 1.2rem; /* Adjust emoji size */
-  line-height: 1; /* Maintain proper alignment */
-  cursor: pointer;
-  padding: 0; /* Remove extra padding */
+  color: #ff93d5; /* Pink text */
+  height: 36px; /* Match size with other buttons */
+  width: 36px; /* Match width for consistency */
 }
 
 .delete-button:hover {
-  transform: scale(1.2); /* Slightly enlarge emoji on hover */
-  background-color: transparent; /* No background */
+  transform: scale(1.1); /* Slight enlargement */
+  background-color: transparent; /* No background change */
 }
 
-/* Subtask List */
-.subtask-list {
-  list-style: none; /* Remove bullets */
-  padding-left: 20px; /* Indent subtasks for hierarchy */
-  margin-top: 10px; /* Space above subtasks */
-}
-
-/* Individual Subtasks */
-.subtask {
-  display: flex;
-  align-items: center;
-  margin-bottom: 5px; /* Spacing between subtasks */
-}
-
-.subtask.done .subtask-text {
-  text-decoration: line-through; /* Strike-through for completed subtasks */
-  color: #4caf50; /* Green for done subtasks */
-}
-
-.subtask-text {
-  margin-left: 10px; /* Space between checkbox and text */
-  font-size: 0.9rem;
-}
-
-/* Subtask Input */
-.subtask-input {
-  margin-top: 10px;
-  display: flex;
-  gap: 5px; /* Space between input and button */
-}
-
-.subtask-input input {
-  flex: 1;
-  padding: 5px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 0.9rem;
-}
-
-/* Add Subtask Button */
-.add-subtask-button {
-  background-color: transparent; /* Transparent background */
-  border: none;
-  font-size: 1.2rem; /* Adjust size */
-  cursor: pointer; /* Pointer cursor */
-  transition: transform 0.3s ease; /* Smooth hover effect */
-}
-
-.add-subtask-button:hover {
-  transform: scale(1.2); /* Slightly enlarge on hover */
-}
-
-/* Save Subtask Button */
-.save-subtask-button {
-  padding: 5px 10px;
-  background-color: #4caf50; /* Green background */
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.save-subtask-button:hover {
-  background-color: #388e3c; /* Darker green on hover */
+.delete-button:active {
+  transform: none; /* Prevent click effects */
 }

@@ -1,40 +1,20 @@
-/* Center the root container */
 #root {
-  max-width: 600px; /* Restrict the width of the app */
-  margin: 0 auto; /* Center horizontally */
+  max-width: 600px;
+  margin: 0 auto;
   padding: 2rem;
   text-align: center;
 }
 
-/* App Wrapper (Card Style) */
 .app {
-  background-color: white; /* Card background */
+  background-color: white;
   border-radius: 10px;
   padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for elevation */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* App Title */
 h1 {
   font-size: 2.5rem;
-  font-weight: bold; /* Make the title visually impactful */
-  color: #ff93d5; /* Main app header color */
+  font-weight: bold;
+  color: #ff93d5;
   margin-bottom: 20px;
-}
-
-/* Card Style */
-.card {
-  padding: 20px;
-  background-color: #ffeffc; /* Light background for cards */
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-}
-
-/* Read the Docs Section */
-.read-the-docs {
-  color: #888;
-  margin-top: 20px;
-  font-size: 0.9rem;
-  line-height: 1.6;
-  text-align: center;
 }

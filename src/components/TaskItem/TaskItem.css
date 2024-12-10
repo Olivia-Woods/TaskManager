@@ -3,13 +3,15 @@
   background-color: #fff; /* Default white background */
   padding: 10px 15px;
   border: 1px solid #ddd; /* Default border */
-  border-radius: 5px;
-  margin-bottom: 10px;
+  border-radius: 5px; /* Rounded corners */
+  margin-bottom: 10px; /* Space between items */
   display: flex;
-  justify-content: space-between; /* Space out content */
-  align-items: center;
+  flex-direction: column; /* Stack content vertically */
+  justify-content: center; /* Center content vertically */
+  align-items: stretch; /* Stretch content horizontally to fill container */
   position: relative; /* For additional positioning */
   transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transitions */
+  width: 100%; /* Ensure it stretches to the container width */
 }
 
 /* Task Item When Done */
@@ -26,15 +28,19 @@
 
 /* Task Content */
 .task-content {
-  flex: 1; /* Take available space */
+  width: 100%; /* Ensure content takes the full width */
+  text-align: left; /* Align text to the left */
   display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* Align text to the left */
+  flex-direction: column; /* Stack timestamp and task text */
+  align-items: flex-start; /* Align items to the start (left) */
+  padding-left: 15px; /* Add padding to match the layout */
 }
 
+/* Task Text */
 .task-text {
   font-size: 1rem;
   color: #333;
+  margin-bottom: 8px; /* Space between text and timestamp */
   transition: color 0.3s ease, text-decoration-color 0.3s ease; /* Smooth transitions */
 }
 
@@ -48,11 +54,19 @@
   color: #e61f93; /* Pink text for priority tasks */
 }
 
+/* Timestamp */
+.timestamp {
+  font-size: 0.8rem;
+  color: #888; /* Subtle color for timestamp */
+  margin-bottom: 12px; /* Space below timestamp */
+}
+
 /* Buttons Section */
 .buttons {
   display: flex;
-  align-items: center;
+  justify-content: flex-start; /* Align buttons to the left */
   gap: 8px; /* Adjusted gap for consistent spacing */
+  padding-left: 15px; /* Add padding to match the layout */
 }
 
 /* Shared Button Styles */
@@ -72,24 +86,17 @@
   transition: transform 0.2s ease; /* Add smooth enlargement on hover */
 }
 
-/* Move Buttons */
-.move-button {
-  background-color: #ff93d5; /* Pink background */
-  color: white; /* White text */
-}
-
-.move-button:hover {
-  background-color: #e61f93; /* Darker pink on hover */
-}
-
 /* Done Button */
 .done-button {
-  background-color: #4caf50; /* Green background */
-  color: white; /* White text */
+  background-color: transparent; /* No background */
+  color: #ff93d5; /* Pink text */
+  height: 36px; /* Match size with other buttons */
+  width: 36px; /* Match width for consistency */
 }
 
 .done-button:hover {
-  background-color: #388e3c; /* Darker green on hover */
+  transform: scale(1.1); /* Slight enlargement */
+  background-color: transparent; /* No background change */
 }
 
 /* Priority Button */
@@ -112,7 +119,6 @@
 /* Delete Button */
 .delete-button {
   background-color: transparent; /* No background */
-  color: #ff93d5; /* Pink text */
   height: 36px; /* Match size with other buttons */
   width: 36px; /* Match width for consistency */
 }
@@ -123,5 +129,21 @@
 }
 
 .delete-button:active {
+  transform: none; /* Prevent click effects */
+}
+
+/* Edit Button */
+.edit-button {
+  background-color: transparent; /* No background */
+  height: 36px; /* Match size with other buttons */
+  width: 36px; /* Match width for consistency */
+}
+
+.edit-button:hover {
+  transform: scale(1.1); /* Slight enlargement */
+  background-color: transparent; /* No background change */
+}
+
+.edit-button:active {
   transform: none; /* Prevent click effects */
 }

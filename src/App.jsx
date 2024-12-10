@@ -38,6 +38,14 @@ const App = () => {
     );
   };
 
+  const editTask = (taskId, newText) => {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task.id === taskId ? { ...task, text: newText } : task
+      )
+    );
+  };
+
   const onDragEnd = (result) => {
     const { source, destination } = result;
     if (!destination || source.index === destination.index) return;
@@ -59,6 +67,7 @@ const App = () => {
           onDelete={deleteTask}
           onToggleDone={toggleTaskDone}
           onTogglePriority={togglePriority}
+          onEditTask={editTask} // Pass editTask here
         />
       </DragDropContext>
     </div>

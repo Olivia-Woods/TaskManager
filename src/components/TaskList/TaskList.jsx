@@ -3,8 +3,16 @@ import TaskItem from "../TaskItem/TaskItem";
 import { Droppable, Draggable } from "react-beautiful-dnd";
 import "./TaskList.css";
 
-const TaskList = ({ tasks, onDelete, onToggleDone, onTogglePriority }) => {
-  if (tasks.length === 0) return <p>No tasks available. Add one above!</p>;
+const TaskList = ({
+  tasks,
+  onDelete,
+  onToggleDone,
+  onTogglePriority,
+  onEditTask,
+}) => {
+  if (!tasks || tasks.length === 0) {
+    return <p>No tasks available. Add one above!</p>;
+  }
 
   return (
     <Droppable droppableId="taskList">
@@ -16,8 +24,8 @@ const TaskList = ({ tasks, onDelete, onToggleDone, onTogglePriority }) => {
         >
           {tasks.map((task, index) => (
             <Draggable
-              key={task.id} // Ensure unique key
-              draggableId={task.id} // String-based draggableId
+              key={task.id.toString()}
+              draggableId={task.id.toString()}
               index={index}
             >
               {(provided) => (
@@ -25,13 +33,13 @@ const TaskList = ({ tasks, onDelete, onToggleDone, onTogglePriority }) => {
                   ref={provided.innerRef}
                   {...provided.draggableProps}
                   {...provided.dragHandleProps}
-                  className="task-item"
                 >
                   <TaskItem
                     task={task}
                     onDelete={() => onDelete(task.id)}
                     onToggleDone={() => onToggleDone(task.id)}
                     onTogglePriority={() => onTogglePriority(task.id)}
+                    onEditTask={onEditTask}
                   />
                 </li>
               )}

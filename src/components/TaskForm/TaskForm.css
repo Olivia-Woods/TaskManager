@@ -1,21 +1,23 @@
 /* Form Container */
 form {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: center; /* Center items horizontally */
+  align-items: center; /* Center items vertically */
   gap: 10px;
   margin-bottom: 20px;
 }
 
 /* Input Styling */
 input {
-  width: 70%;
+  width: 100%; /* Take up full available width */
+  max-width: 400px; /* Optional: Restrict maximum width for larger screens */
   padding: 10px;
   font-size: 1rem;
   border: 2px solid #ff93d5;
   border-radius: 5px;
   outline: none;
   transition: border-color 0.3s ease;
+  box-sizing: border-box; /* Ensure padding doesn't affect width */
 }
 
 input:focus {
@@ -24,7 +26,7 @@ input:focus {
 
 /* Button Styling */
 button {
-  padding: 10px 15px;
+  padding: 10px 20px;
   background-color: #ff93d5;
   color: white;
   border: none;
@@ -32,9 +34,10 @@ button {
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
+  text-align: center; /* Center text inside the button */
 }
 
 button:hover {
   background-color: #e61f93;
-  transform: scale(1.02); /* Add subtle scaling effect */
+  transform: scale(1.02);
 }

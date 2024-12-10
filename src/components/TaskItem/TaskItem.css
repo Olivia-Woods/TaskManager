@@ -1,149 +1,178 @@
+/* --- Task Item Styles --- */
+
 /* Task Item Container */
 .task-item {
-  background-color: #fff; /* Default white background */
+  background-color: #fff;
   padding: 10px 15px;
-  border: 1px solid #ddd; /* Default border */
-  border-radius: 5px; /* Rounded corners */
-  margin-bottom: 10px; /* Space between items */
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
   display: flex;
-  flex-direction: column; /* Stack content vertically */
-  justify-content: center; /* Center content vertically */
-  align-items: stretch; /* Stretch content horizontally to fill container */
-  position: relative; /* For additional positioning */
-  transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transitions */
-  width: 100%; /* Ensure it stretches to the container width */
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  position: relative;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  width: 100%;
 }
 
-/* Task Item When Done */
+/* Task Item - Completed */
 .task-item.done {
-  background-color: #d4f8e8; /* Light green background */
-  border-color: #4caf50; /* Green border */
+  background-color: #d4f8e8;
+  border-color: #4caf50;
 }
 
-/* Task Item When Priority */
+/* Task Item - Priority */
 .task-item.priority {
-  background-color: #ffeffc; /* Light pink background */
-  border-color: #e61f93; /* Dark pink border */
+  background-color: #ffeffc;
+  border-color: #e61f93;
 }
 
-/* Task Content */
+/* --- Task Content Styles --- */
+
+/* Task Content Layout */
 .task-content {
-  width: 100%; /* Ensure content takes the full width */
-  text-align: left; /* Align text to the left */
+  width: 100%;
   display: flex;
-  flex-direction: column; /* Stack timestamp and task text */
-  align-items: flex-start; /* Align items to the start (left) */
-  padding-left: 15px; /* Add padding to match the layout */
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-left: 50px; /* Align with buttons */
+  position: relative;
 }
 
 /* Task Text */
 .task-text {
   font-size: 1rem;
   color: #333;
-  margin-bottom: 8px; /* Space between text and timestamp */
-  transition: color 0.3s ease, text-decoration-color 0.3s ease; /* Smooth transitions */
+  margin-left: 50px; /* Align with buttons */
+  margin-right: auto;
+  max-width: 80%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.5;
 }
 
+/* Task Text - Completed */
 .task-item.done .task-text {
-  text-decoration: line-through; /* Strike-through for completed tasks */
-  text-decoration-color: #4caf50; /* Green strike-through */
-  color: #4caf50; /* Green text color for completed tasks */
+  text-decoration: line-through;
+  text-decoration-color: #4caf50;
+  color: #4caf50;
 }
 
+/* Task Text - Priority */
 .task-item.priority .task-text {
-  color: #e61f93; /* Pink text for priority tasks */
+  color: #e61f93;
 }
+
+/* ---------------------------- */
+/* Timestamp Styles             */
+/* ---------------------------- */
 
 /* Timestamp */
 .timestamp {
   font-size: 0.8rem;
-  color: #888; /* Subtle color for timestamp */
-  margin-bottom: 12px; /* Space below timestamp */
+  color: #888;
+  margin-bottom: 12px;
 }
 
-/* Buttons Section */
+/* ---------------------------- */
+/* Button Section Styles        */
+/* ---------------------------- */
+
+/* Button Section Layout */
 .buttons {
   display: flex;
-  justify-content: flex-start; /* Align buttons to the left */
-  gap: 8px; /* Adjusted gap for consistent spacing */
-  padding-left: 15px; /* Add padding to match the layout */
+  justify-content: flex-start;
+  align-items: flex-end;
+  gap: 2px;
+  padding-left: 4px;
 }
 
 /* Shared Button Styles */
 .move-button,
 .done-button,
 .priority-button,
-.delete-button {
-  padding: 5px 10px; /* Consistent padding for all buttons */
+.delete-button,
+.edit-button {
+  padding: 5px 10px;
   border: none;
-  border-radius: 5px; /* Rounded corners */
-  font-size: 0.9rem; /* Button font size */
-  cursor: pointer; /* Pointer cursor for interactivity */
-  height: 36px; /* Consistent height for all buttons */
+  border-radius: 5px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  height: 36px;
+  width: 36px;
   display: flex;
   align-items: center;
-  justify-content: center; /* Center content */
-  transition: transform 0.2s ease; /* Add smooth enlargement on hover */
+  justify-content: center;
+  background-color: transparent;
+  transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 /* Done Button */
 .done-button {
-  background-color: transparent; /* No background */
-  color: #ff93d5; /* Pink text */
-  height: 36px; /* Match size with other buttons */
-  width: 36px; /* Match width for consistency */
+  color: #ff93d5;
 }
 
 .done-button:hover {
-  transform: scale(1.1); /* Slight enlargement */
-  background-color: transparent; /* No background change */
+  transform: scale(1.1);
+  background-color: transparent;
 }
 
 /* Priority Button */
 .priority-button {
-  background-color: transparent; /* No background */
-  color: #ff93d5; /* Pink text */
-  height: 36px; /* Match size with other buttons */
-  width: 36px; /* Match width for consistency */
+  color: #ff93d5;
 }
 
 .priority-button:hover {
-  transform: scale(1.1); /* Slight enlargement */
-  background-color: transparent; /* No background change */
-}
-
-.priority-button:active {
-  transform: none; /* Prevent click effects */
+  transform: scale(1.1);
+  background-color: transparent;
 }
 
 /* Delete Button */
 .delete-button {
-  background-color: transparent; /* No background */
-  height: 36px; /* Match size with other buttons */
-  width: 36px; /* Match width for consistency */
+  color: #888;
 }
 
 .delete-button:hover {
-  transform: scale(1.1); /* Slight enlargement */
-  background-color: transparent; /* No background change */
-}
-
-.delete-button:active {
-  transform: none; /* Prevent click effects */
+  transform: scale(1.1);
+  background-color: transparent;
 }
 
 /* Edit Button */
 .edit-button {
-  background-color: transparent; /* No background */
-  height: 36px; /* Match size with other buttons */
-  width: 36px; /* Match width for consistency */
+  color: #888;
 }
 
 .edit-button:hover {
-  transform: scale(1.1); /* Slight enlargement */
-  background-color: transparent; /* No background change */
+  transform: scale(1.1);
+  background-color: transparent;
 }
 
+/* Active Button States */
+.move-button:active,
+.done-button:active,
+.priority-button:active,
+.delete-button:active,
 .edit-button:active {
-  transform: none; /* Prevent click effects */
+  transform: none;
+}
+
+/* ---------------------------- */
+/* Responsive Design            */
+/* ---------------------------- */
+
+/* Small Screen Adjustments */
+@media (max-width: 768px) {
+  .task-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .buttons {
+    justify-content: flex-start;
+    padding-left: 0;
+  }
 }

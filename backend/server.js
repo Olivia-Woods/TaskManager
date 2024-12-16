@@ -24,7 +24,7 @@ app.post("/tasks", (req, res) => {
   const { text, isDone = false, isPriority = false } = req.body;
 
   if (!text) {
-    return res.status(400).json({ error: "Task text is required" });
+    return res.status(400).json({ error: "Task Text is Required!" });
   }
 
   const newTask = {
@@ -60,10 +60,10 @@ app.put("/tasks/:id", (req, res) => {
   });
 
   if (!taskFound) {
-    return res.status(404).json({ error: "Task not found" });
+    return res.status(404).json({ error: "Task NOT Found!" });
   }
 
-  res.json({ message: "Task updated successfully" });
+  res.json({ message: "Task Updated Successfully!" });
 });
 
 // DELETE: Delete A Task
@@ -73,10 +73,10 @@ app.delete("/tasks/:id", (req, res) => {
   tasks = tasks.filter((task) => task.id !== id);
 
   if (tasks.length === initialLength) {
-    return res.status(404).json({ error: "Task not found" });
+    return res.status(404).json({ error: "Task NOT Found!" });
   }
 
-  res.json({ message: "Task deleted successfully" });
+  res.json({ message: "Task Deleted Successfully!" });
 });
 
 // Server Start

@@ -1,26 +1,33 @@
 import React, { useState } from "react";
 
+// Component: TaskForm
+// This component handles the form for adding new tasks.
 const TaskForm = ({ onAdd }) => {
+  // State: Tracks the current input value for the task
   const [task, setTask] = useState("");
 
+  // Function: Handles form submission
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent page reload
     if (task.trim()) {
+      // Add a new task with the provided input
       onAdd({
         id: Date.now().toString(), // Unique string ID
-        text: task.trim(),
-        timestamp: new Date().toLocaleString(), // Human-readable date and time
-        isDone: false,
-        isPriority: false,
+        text: task.trim(), // Cleaned input text
+        timestamp: new Date().toLocaleString(), // Timestamp for when the task was added
+        isDone: false, // Default 'not done' state
+        isPriority: false, // Default 'not priority' state
       });
-      setTask(""); // Clear input after adding
+      setTask(""); // Clear input after adding the task
     } else {
-      alert("Task cannot be empty!"); // Simple validation
+      alert("Task cannot be empty!"); // Simple validation to prevent empty tasks
     }
   };
 
   return (
+    // JSX: Form for entering a new task
     <form onSubmit={handleSubmit}>
+      {/* Input field for task text */}
       <input
         type="text"
         value={task}
@@ -28,6 +35,7 @@ const TaskForm = ({ onAdd }) => {
         placeholder="Enter your task..."
         required
       />
+      {/* Submit button */}
       <button type="submit">Add Task</button>
     </form>
   );

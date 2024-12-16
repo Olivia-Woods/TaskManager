@@ -1,49 +1,50 @@
 /* Task Item Container */
 .task-item {
-  background-color: #fff; /* Default white background */
+  background-color: #fff;
   padding: 10px 15px;
-  border: 1px solid #ddd; /* Default border */
-  border-radius: 5px; /* Rounded corners */
-  margin-bottom: 10px; /* Space between items */
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
   display: flex;
-  flex-direction: column; /* Stack content vertically */
-  justify-content: center; /* Center content vertically */
-  align-items: stretch; /* Stretch content horizontally to fill container */
-  position: relative; /* For additional positioning */
-  transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transitions */
-  width: 100%; /* Ensure it stretches to the container width */
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  position: relative;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  width: 100%;
 }
 
 /* Task Item When Done */
 .task-item.done {
-  background-color: #d4f8e8; /* Light green background */
-  border-color: #4caf50; /* Green border */
+  background-color: #d4f8e8;
+  border-color: #4caf50;
 }
 
-/* Task Item When Priority */
+/* Task Item When Marked as Priority */
 .task-item.priority {
-  background-color: #ffeffc; /* Light pink background */
-  border-color: #e61f93; /* Dark pink border */
+  background-color: #ffeffc;
+  border-color: #e61f93;
 }
 
-/* Task Content */
+/* Task Content Container */
 .task-content {
   width: 100%;
   display: flex;
-  flex-direction: row; /* Place task text and timestamp in the same row initially */
+  flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 10px;
-  padding-left: 2px; /* Ensure it aligns with the buttons */
-  position: relative; /* To allow precise positioning */
+  padding-left: 2px;
+  position: relative;
 }
 
+/* Task Text Styles */
 .task-text {
   font-size: 1rem;
   color: #333;
-  margin-left: 10px; /* Ensure it aligns with the buttons */
-  margin-right: auto; /* Push the timestamp away */
+  margin-left: 10px;
+  margin-right: auto;
   max-width: 80%;
   word-wrap: break-word;
   overflow-wrap: break-word;
@@ -51,29 +52,29 @@
 }
 
 .task-item.done .task-text {
-  text-decoration: line-through; /* Strike-through for completed tasks */
-  text-decoration-color: #4caf50; /* Green strike-through */
-  color: #4caf50; /* Green text color for completed tasks */
+  text-decoration: line-through;
+  text-decoration-color: #4caf50;
+  color: #4caf50;
 }
 
 .task-item.priority .task-text {
-  color: #e61f93; /* Pink text for priority tasks */
+  color: #e61f93;
 }
 
-/* Timestamp */
+/* Timestamp Styles */
 .timestamp {
   font-size: 0.8rem;
-  color: #888; /* Subtle color for timestamp */
-  margin-bottom: 12px; /* Space below timestamp */
+  color: #888;
+  margin-bottom: 12px;
 }
 
-/* Buttons Section */
+/* Buttons Container */
 .buttons {
   display: flex;
-  justify-content: flex-start; /* Align buttons/emojis to the left */
-  align-items: flex-end; /* Align emojis to the bottom of the row */
-  gap: 2px; /* Adjusted gap for consistent spacing */
-  padding-left: 4px; /* Add padding to match the layout */
+  justify-content: flex-start;
+  align-items: flex-end;
+  gap: 2px;
+  padding-left: 4px;
 }
 
 /* Shared Button Styles */
@@ -82,78 +83,78 @@
 .priority-button,
 .delete-button,
 .edit-button {
-  padding: 5px 10px; /* Consistent padding for all buttons */
+  padding: 5px 10px;
   border: none;
-  border-radius: 5px; /* Rounded corners */
-  font-size: 0.9rem; /* Button font size */
-  cursor: pointer; /* Pointer cursor for interactivity */
-  height: 36px; /* Consistent height for all buttons */
-  width: 36px; /* Consistent width for all buttons */
+  border-radius: 5px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  height: 36px;
+  width: 36px;
   display: flex;
-  align-items: center; /* Center content within the button */
-  justify-content: center; /* Center content horizontally */
-  background-color: transparent; /* No background */
-  transition: transform 0.2s ease, background-color 0.2s ease; /* Smooth transitions */
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 /* Done Button */
 .done-button {
-  color: #ff93d5; /* Pink text */
+  color: #ff93d5;
 }
 
 .done-button:hover {
-  transform: scale(1.1); /* Slight enlargement */
-  background-color: transparent; /* No background change */
+  transform: scale(1.1);
+  background-color: transparent;
 }
 
 /* Priority Button */
 .priority-button {
-  color: #ff93d5; /* Pink text */
+  color: #ff93d5;
 }
 
 .priority-button:hover {
-  transform: scale(1.1); /* Slight enlargement */
-  background-color: transparent; /* No background change */
+  transform: scale(1.1);
+  background-color: transparent;
 }
 
 /* Delete Button */
 .delete-button {
-  color: #888; /* Subtle color for delete button */
+  color: #888;
 }
 
 .delete-button:hover {
-  transform: scale(1.1); /* Slight enlargement */
-  background-color: transparent; /* No background change */
+  transform: scale(1.1);
+  background-color: transparent;
 }
 
 /* Edit Button */
 .edit-button {
-  color: #888; /* Subtle color for edit button */
+  color: #888;
 }
 
 .edit-button:hover {
-  transform: scale(1.1); /* Slight enlargement */
-  background-color: transparent; /* No background change */
+  transform: scale(1.1);
+  background-color: transparent;
 }
 
-/* Active States */
+/* Active Button States */
 .move-button:active,
 .done-button:active,
 .priority-button:active,
 .delete-button:active,
 .edit-button:active {
-  transform: none; /* Prevent click effects */
+  transform: none;
 }
 
-/* Responsive Design */
+/* Responsive Design for Smaller Screens */
 @media (max-width: 768px) {
   .task-item {
-    flex-direction: column; /* Stack content on small screens */
-    align-items: flex-start; /* Align items to the left */
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .buttons {
-    justify-content: flex-start; /* Align buttons to the left */
-    padding-left: 0; /* Remove extra padding on smaller screens */
+    justify-content: flex-start;
+    padding-left: 0;
   }
 }

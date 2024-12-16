@@ -94,7 +94,7 @@ A full-stack web application for managing tasks dynamically. Built using **React
 ## Known Issues and Future Enhancements
 
 - Add persistent storage (e.g., MongoDB or PostgreSQL).
-- Implement user authentication for personalized task lists.
+- Implement user authentication for personalised task lists.
 - Enhance drag-and-drop functionality with grouping.
 
 ## Acknowledgments

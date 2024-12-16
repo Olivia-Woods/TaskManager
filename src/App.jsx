@@ -5,47 +5,121 @@ import { DragDropContext } from "react-beautiful-dnd";
 import "./styles/App.css";
 
 const App = () => {
-  const [tasks, setTasks] = useState(() => {
-    const savedTasks = localStorage.getItem("tasks");
-    return savedTasks ? JSON.parse(savedTasks) : [];
-  });
+  const [tasks, setTasks] = useState([]);
 
+  // Fetch all tasks when the component loads
   useEffect(() => {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-  }, [tasks]);
+    const fetchTasks = async () => {
+      try {
+        const response = await fetch("http://localhost:5001/tasks");
+        const data = await response.json();
+        setTasks(data);
+      } catch (error) {
+        console.error("Error fetching tasks:", error);
+      }
+    };
+    fetchTasks();
+  }, []);
 
-  const addTask = (newTask) => {
-    setTasks((prevTasks) => [...prevTasks, newTask]);
+  // Add a new task
+  const addTask = async (newTask) => {
+    try {
+      const response = await fetch("http://localhost:5001/tasks", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newTask),
+      });
+      const savedTask = await response.json();
+      setTasks((prevTasks) => [...prevTasks, savedTask]);
+    } catch (error) {
+      console.error("Error adding task:", error);
+    }
   };
 
-  const deleteTask = (taskId) => {
-    setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
+  // Delete a task
+  const deleteTask = async (taskId) => {
+    try {
+      await fetch(`http://localhost:5001/tasks/${taskId}`, {
+        method: "DELETE",
+      });
+      setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
+    } catch (error) {
+      console.error("Error deleting task:", error);
+    }
   };
 
-  const toggleTaskDone = (taskId) => {
-    setTasks((prevTasks) =>
-      prevTasks.map((task) =>
-        task.id === taskId ? { ...task, isDone: !task.isDone } : task
-      )
-    );
+  // Toggle 'done' status
+  const toggleTaskDone = async (taskId) => {
+    try {
+      const taskToUpdate = tasks.find((task) => task.id === taskId);
+      const updatedTask = { ...taskToUpdate, isDone: !taskToUpdate.isDone };
+
+      await fetch(`http://localhost:5001/tasks/${taskId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedTask),
+      });
+
+      setTasks((prevTasks) =>
+        prevTasks.map((task) =>
+          task.id === taskId ? { ...task, isDone: updatedTask.isDone } : task
+        )
+      );
+    } catch (error) {
+      console.error("Error toggling task done status:", error);
+    }
   };
 
-  const togglePriority = (taskId) => {
-    setTasks((prevTasks) =>
-      prevTasks.map((task) =>
-        task.id === taskId ? { ...task, isPriority: !task.isPriority } : task
-      )
-    );
+  // Toggle priority
+  const togglePriority = async (taskId) => {
+    try {
+      const taskToUpdate = tasks.find((task) => task.id === taskId);
+      const updatedTask = {
+        ...taskToUpdate,
+        isPriority: !taskToUpdate.isPriority,
+      };
+
+      await fetch(`http://localhost:5001/tasks/${taskId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedTask),
+      });
+
+      setTasks((prevTasks) =>
+        prevTasks.map((task) =>
+          task.id === taskId
+            ? { ...task, isPriority: updatedTask.isPriority }
+            : task
+        )
+      );
+    } catch (error) {
+      console.error("Error toggling priority:", error);
+    }
   };
 
-  const editTask = (taskId, newText) => {
-    setTasks((prevTasks) =>
-      prevTasks.map((task) =>
-        task.id === taskId ? { ...task, text: newText } : task
-      )
-    );
+  // Edit task text
+  const editTask = async (taskId, newText) => {
+    try {
+      const taskToUpdate = tasks.find((task) => task.id === taskId);
+      const updatedTask = { ...taskToUpdate, text: newText };
+
+      await fetch(`http://localhost:5001/tasks/${taskId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedTask),
+      });
+
+      setTasks((prevTasks) =>
+        prevTasks.map((task) =>
+          task.id === taskId ? { ...task, text: updatedTask.text } : task
+        )
+      );
+    } catch (error) {
+      console.error("Error editing task:", error);
+    }
   };
 
+  // Drag and drop logic (kept as is)
   const onDragEnd = (result) => {
     const { source, destination } = result;
     if (!destination || source.index === destination.index) return;
@@ -67,7 +141,7 @@ const App = () => {
           onDelete={deleteTask}
           onToggleDone={toggleTaskDone}
           onTogglePriority={togglePriority}
-          onEditTask={editTask} // Pass editTask here
+          onEditTask={editTask}
         />
       </DragDropContext>
     </div>

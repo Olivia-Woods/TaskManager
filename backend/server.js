@@ -14,6 +14,13 @@ let tasks = [];
 
 // Routes
 
+// Root Route (GET /)
+app.get("/", (req, res) => {
+  res.send(
+    "Welcome to the Task Manager API! Use the /tasks endpoint for managing tasks."
+  );
+});
+
 // GET: Fetch All Tasks
 app.get("/tasks", (req, res) => {
   res.json(tasks);

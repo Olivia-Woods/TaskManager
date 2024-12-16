@@ -2,11 +2,11 @@
 
 ## Overview
 
-A full-stack web application for managing tasks dynamically. Built using **React** for the frontend and **Express** for the backend, this app allows users to add, edit, prioritize, complete, and delete tasks. Features include a drag-and-drop interface and a beautifully styled, responsive UI.
+A full-stack web application for managing tasks dynamically. Built using **React** for the frontend and **Express** for the backend, this app allows users to add, edit, prioritise, complete, and delete tasks. Features include a drag-and-drop interface and a beautifully styled, responsive UI.
 
 ## Features
 
-- **Task Management**: Add, edit, complete, prioritize, and delete tasks.
+- **Task Management**: Add, edit, complete, prioritise, and delete tasks.
 - **Drag-and-Drop**: Rearrange tasks dynamically.
 - **Responsive Design**: Beautifully styled and fully responsive UI.
 - **Backend Integration**: All task data is stored and managed via an Express.js backend.

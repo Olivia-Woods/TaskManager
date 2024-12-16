@@ -81,11 +81,9 @@ A full-stack web application for managing tasks dynamically. Built using **React
 1. **GET `/tasks`**:
    Fetch all tasks using `curl`:
    curl http://localhost:5001/tasks
-
 2. **POST `/tasks`**:
    Add a new task using `curl`:
    curl -X POST http://localhost:5001/tasks -H "Content-Type: application/json" -d '{"text": "Test Task", "isDone": false, "isPriority": false}'
-
 3. **PUT `/tasks/:id`**:
    Update a task using `curl` (replace `<id>` with the task ID):
    curl -X PUT http://localhost:5001/tasks/<id> -H "Content-Type: application/json" -d '{"text": "Updated Task", "isDone": true}'

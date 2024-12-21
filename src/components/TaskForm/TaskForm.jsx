@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 // Component: TaskForm
-// This component handles the form for adding new tasks.
+// This component handles the form for adding new tasks
 const TaskForm = ({ onAdd }) => {
   // State: Tracks the current input value for the task
   const [task, setTask] = useState("");
@@ -13,7 +13,7 @@ const TaskForm = ({ onAdd }) => {
       // Add a new task with the provided input
       onAdd({
         id: Date.now().toString(), // Unique string ID
-        text: task.trim(), // Cleaned input text
+        text: task.trim(), // Remove any whitespace from the beginning and end of the string
         timestamp: new Date().toLocaleString(), // Timestamp for when the task was added
         isDone: false, // Default 'not done' state
         isPriority: false, // Default 'not priority' state

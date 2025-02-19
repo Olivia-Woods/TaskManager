@@ -13,7 +13,7 @@ input {
   max-width: 400px;
   padding: 10px;
   font-size: 1rem;
-  border: 2px solid #ff93d5;
+  border: 2px solid #ff69b4;
   border-radius: 5px;
   outline: none;
   transition: border-color 0.3s ease;
@@ -21,13 +21,13 @@ input {
 }
 
 input:focus {
-  border-color: #e61f93;
+  border-color: #ff1493;
 }
 
 /* Button Styling */
 button {
   padding: 10px 20px;
-  background-color: #ff93d5;
+  background-color: #ff69b4;
   color: white;
   border: none;
   border-radius: 5px;
@@ -38,6 +38,6 @@ button {
 }
 
 button:hover {
-  background-color: #e61f93;
+  background-color: #ff1493;
   transform: scale(1.02);
 }

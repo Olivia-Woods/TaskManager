@@ -23,6 +23,20 @@ body {
   min-height: 100vh;
 }
 
+body {
+  background-image: url(./bgt.png);
+  background-size: cover;
+  background-position: center;
+  background-color: #ffeffc;
+  margin: 0; /* Prevents unwanted spacing */
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center; /* Centers content horizontally */
+  align-items: center; /* Centers content vertically */
+}
+
 button {
   font-family: inherit;
   font-size: 1rem;

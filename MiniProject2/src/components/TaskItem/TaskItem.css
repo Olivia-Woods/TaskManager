@@ -2,8 +2,8 @@
 .task-item {
   background-color: #fff;
   padding: 10px 15px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  border: 2.5px solid #ff1493;
+  border-radius: 10px;
   margin-bottom: 10px;
   display: flex;
   flex-direction: column;

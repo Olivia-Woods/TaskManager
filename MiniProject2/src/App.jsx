@@ -137,9 +137,15 @@ const App = () => {
   return (
     // Main app layout
     <div className="app">
-      <h1>Task Manager</h1>
+      <img
+        src="../../public/TM.png"
+        alt="Heading Image"
+        style={{ width: "360px", height: "auto" }}
+      />
       {/* Task form for adding new tasks */}
-      <TaskForm onAdd={addTask} />
+      <div style={{ marginBottom: "20px" }}>
+        <TaskForm onAdd={addTask} />
+      </div>
       {/* Drag-and-drop context for reordering tasks */}
       <DragDropContext onDragEnd={onDragEnd}>
         <TaskList

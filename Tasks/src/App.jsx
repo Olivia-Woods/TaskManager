@@ -7,10 +7,10 @@ import "./styles/App.css";
 // Component: App
 // This is the main component that manages tasks and coordinates between the TaskForm and TaskList components.
 const App = () => {
-  // State: Tracks the list of tasks
+  // State: Tracks the list of tasks.
   const [tasks, setTasks] = useState([]);
 
-  // Effect: Fetches all tasks from the backend when the component loads
+  // Effect: Fetches all tasks from the backend when the component loads.
   useEffect(() => {
     const fetchTasks = async () => {
       try {
@@ -24,7 +24,7 @@ const App = () => {
     fetchTasks();
   }, []);
 
-  // Function: Adds a new task to the backend and updates the state
+  // Function: Adds a new task to the backend and updates the state.
   const addTask = async (newTask) => {
     try {
       const response = await fetch("http://localhost:5001/tasks", {
@@ -39,7 +39,7 @@ const App = () => {
     }
   };
 
-  // Function: Deletes a task from the backend and updates the state
+  // Function: Deletes a task from the backend and updates the state.
   const deleteTask = async (taskId) => {
     try {
       await fetch(`http://localhost:5001/tasks/${taskId}`, {
@@ -51,7 +51,7 @@ const App = () => {
     }
   };
 
-  // Function: Toggles the 'done' status of a task
+  // Function: Toggles the 'done' status of a task.
   const toggleTaskDone = async (taskId) => {
     try {
       const taskToUpdate = tasks.find((task) => task.id === taskId);
@@ -73,7 +73,7 @@ const App = () => {
     }
   };
 
-  // Function: Toggles the priority of a task
+  // Function: Toggles the priority of a task.
   const togglePriority = async (taskId) => {
     try {
       const taskToUpdate = tasks.find((task) => task.id === taskId);
@@ -100,7 +100,7 @@ const App = () => {
     }
   };
 
-  // Function: Edits the text of a task
+  // Function: Edits the text of a task.
   const editTask = async (taskId, newText) => {
     try {
       const taskToUpdate = tasks.find((task) => task.id === taskId);
@@ -122,7 +122,7 @@ const App = () => {
     }
   };
 
-  // Function: Handles drag and drop logic for reordering tasks
+  // Function: Handles drag and drop logic for reordering tasks.
   const onDragEnd = (result) => {
     const { source, destination } = result;
     if (!destination || source.index === destination.index) return;
@@ -135,18 +135,16 @@ const App = () => {
   };
 
   return (
-    // Main app layout
+    // Main App Layout
     <div className="app">
       <img
         src="../../public/TM.png"
         alt="Heading Image"
         style={{ width: "360px", height: "auto" }}
       />
-      {/* Task form for adding new tasks */}
       <div style={{ marginBottom: "20px" }}>
         <TaskForm onAdd={addTask} />
       </div>
-      {/* Drag-and-drop context for reordering tasks */}
       <DragDropContext onDragEnd={onDragEnd}>
         <TaskList
           tasks={tasks}

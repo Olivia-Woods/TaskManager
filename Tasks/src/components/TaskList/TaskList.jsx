@@ -12,46 +12,45 @@ const TaskList = ({
   onTogglePriority,
   onEditTask,
 }) => {
-  // Render a message if there are no tasks
+  // Render a message if there are no tasks.
   if (!tasks || tasks.length === 0) {
     return <p>No tasks available. Add one above!</p>;
   }
 
   return (
-    // Wrapper for the droppable area
+    // Wrapper for the droppable area.
     <Droppable droppableId="taskList">
       {(provided) => (
         <ul
           className="task-list"
-          {...provided.droppableProps} // Spread droppable props
-          ref={provided.innerRef} // Attach the provided ref
+          {...provided.droppableProps}
+          ref={provided.innerRef}
         >
-          {/* Map over tasks and render each as a draggable item */}
           {tasks.map((task, index) => (
             <Draggable
-              key={task.id.toString()} // Use task ID as the unique key
-              draggableId={task.id.toString()} // Assign a unique draggable ID
-              index={index} // Specify the index for drag positioning
+              key={task.id.toString()}
+              draggableId={task.id.toString()}
+              index={index}
             >
               {(provided) => (
                 <li
-                  ref={provided.innerRef} // Attach the provided ref for dragging
-                  {...provided.draggableProps} // Spread draggable props
-                  {...provided.dragHandleProps} // Spread drag handle props
+                  ref={provided.innerRef}
+                  {...provided.draggableProps}
+                  {...provided.dragHandleProps}
                 >
-                  {/* Render individual task using the TaskItem component */}
+                  {/* Render individual task using the TaskItem component. */}
                   <TaskItem
-                    task={task} // Pass the task data
-                    onDelete={() => onDelete(task.id)} // Handle task deletion
-                    onToggleDone={() => onToggleDone(task.id)} // Toggle done status
-                    onTogglePriority={() => onTogglePriority(task.id)} // Toggle priority
-                    onEditTask={onEditTask} // Handle task editing
+                    task={task}
+                    onDelete={() => onDelete(task.id)}
+                    onToggleDone={() => onToggleDone(task.id)}
+                    onTogglePriority={() => onTogglePriority(task.id)}
+                    onEditTask={onEditTask}
                   />
                 </li>
               )}
             </Draggable>
           ))}
-          {provided.placeholder} {/* Placeholder for spacing during drag */}
+          {provided.placeholder}
         </ul>
       )}
     </Droppable>

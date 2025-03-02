@@ -10,34 +10,32 @@ const TaskItem = ({
   onTogglePriority,
   onEditTask,
 }) => {
-  // State: Tracks whether the task is in edit mode
+  // State: Tracks whether the task is in edit mode.
   const [isEditing, setIsEditing] = useState(false);
 
-  // State: Tracks the edited text for the task
+  // State: Tracks the edited text for the task.
   const [editText, setEditText] = useState(task.text);
 
-  // Function: Handles saving the edited task
+  // Function: Saving Edited Task
   const handleSaveEdit = () => {
-    onEditTask(task.id, editText); // Calls the parent function to save changes
-    setIsEditing(false); // Exits edit mode
+    onEditTask(task.id, editText); // Calls the parent function to save changes.
+    setIsEditing(false); // Exits Edit Mode
   };
 
   return (
-    // Wrapper div for the task item with conditional classes for "done" and "priority"
     <div
       className={`task-item ${task.isDone ? "done" : ""} ${
         task.isPriority ? "priority" : ""
       }`}
     >
-      {/* Task content section */}
+      {/* Task Content Section */}
       <div className="task-content">
-        {/* Conditionally render the edit input or the task text */}
         {isEditing ? (
           <>
             <input
               type="text"
-              value={editText} // Binds input to the current edit text
-              onChange={(e) => setEditText(e.target.value)} // Updates edit text as user types
+              value={editText}
+              onChange={(e) => setEditText(e.target.value)} // Updates edit text as user types.
               className="edit-input"
             />
             <button onClick={handleSaveEdit} className="save-button">
@@ -47,29 +45,27 @@ const TaskItem = ({
         ) : (
           <>
             <span className="task-text">{task.text}</span>{" "}
-            {/* Display task text */}
             <small className="timestamp">{task.timestamp}</small>{" "}
-            {/* Display timestamp */}
           </>
         )}
       </div>
 
-      {/* Action buttons section */}
+      {/* Action Buttons Section */}
       {!isEditing && (
         <div className="buttons">
-          {/* Mark as done button */}
+          {/* Mark As DONE */}
           <button onClick={onToggleDone} className="done-button">
             {task.isDone ? "✅" : "✅"}
           </button>
-          {/* Toggle priority button */}
+          {/* Toggle Priority */}
           <button onClick={onTogglePriority} className="priority-button">
             ⭐
           </button>
-          {/* Edit button to enable edit mode */}
+          {/* Edit */}
           <button onClick={() => setIsEditing(true)} className="edit-button">
             ✏️
           </button>
-          {/* Delete button to remove the task */}
+          {/* Delete */}
           <button onClick={onDelete} className="delete-button">
             🗑️
           </button>

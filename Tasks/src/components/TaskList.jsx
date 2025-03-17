@@ -1,7 +1,6 @@
 import React from "react";
-import TaskItem from "../TaskItem/TaskItem";
+import TaskItem from "./TaskItem";
 import { Droppable, Draggable } from "react-beautiful-dnd";
-import "./TaskList.css";
 
 // Component: TaskList
 // This component renders a list of tasks and enables drag-and-drop functionality.

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./TaskItem.css";
 
 // Component: TaskItem
 // This component represents a single task with options to edit, delete, toggle priority, and mark as done.

@@ -1,3 +1,4 @@
+/* Global Styles */
 * {
   margin: 0;
   padding: 0;
@@ -15,36 +16,94 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Body Styles */
 body {
   display: flex;
   justify-content: center;
   align-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background: #ffeffc url(./bgt.png) center/cover no-repeat;
+  border-radius: 5px;
+  width: 100vw;
+  height: 100vh;
+}
+
+@keyframes moveClouds {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 body {
-  background-image: url(./bgt.png);
-  background-size: cover;
-  background-position: center;
-  background-color: #ffeffc;
-  margin: 0;
-  padding: 0;
-  width: 100vw;
-  height: 100vh;
+  background: url(./bgt.png) repeat-x;
+  animation: moveClouds 140s linear infinite alternate;
+}
+
+/* App Container */
+#root {
+  max-width: 2000px;
+  width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.app {
+  background-color: white;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  position: relative;
+  outline: 12px solid #ff93d5;
+}
+
+/* Header Image */
+.header-image {
+  max-width: 100%;
+  width: 500px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Form Elements */
+input {
+  font-family: inherit;
+  font-size: 1.2rem;
+  width: 240px;
+  max-width: 400px;
+  padding: 10px;
+  border: 3.8px solid #ff93d5;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+input:focus {
+  border-color: #e61f93;
 }
 
 button {
   font-family: inherit;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 500;
   padding: 10px 15px;
-  border: none;
+  border: 3.8px solid;
   border-radius: 8px;
   background-color: #ff93d5;
+  margin-left: 10px;
   color: white;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
@@ -52,19 +111,134 @@ button {
 
 button:hover {
   background-color: #e61f93;
-  transform: scale(1.02);
+  transform: scale(1.08);
 }
 
-input {
-  font-family: inherit;
-  font-size: 1rem;
-  padding: 10px;
-  border: 2px solid #ff93d5;
-  border-radius: 8px;
-  outline: none;
-  transition: border-color 0.3s ease;
+/* Task Items */
+.task-item {
+  background-color: #fff;
+  padding: 10px 15px;
+  border: 4px solid #ff93d5;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  width: 100%;
 }
 
-input:focus {
+.task-item.done {
+  background-color: #d4f8e8;
+  border-color: #4caf50;
+}
+
+.task-item.priority {
+  background-color: #ffeffc;
   border-color: #e61f93;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Task Content */
+.task-content {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-left: 2px;
+}
+
+.task-text {
+  font-size: 1.2rem;
+  color: #333;
+  margin-left: 10px;
+  margin-right: auto;
+  max-width: 80%;
+  overflow-wrap: break-word;
+  line-height: 1.5;
+}
+
+.task-item.done .task-text {
+  text-decoration: line-through;
+  text-decoration-color: #4caf50;
+  color: #4caf50;
+}
+
+.task-item.priority .task-text {
+  color: #e61f93;
+}
+
+/* Task Buttons */
+.buttons {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
+  padding-left: 4px;
+}
+
+.task-button,
+.move-button,
+.done-button,
+.priority-button,
+.delete-button,
+.edit-button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  height: 36px;
+  width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent !important;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.task-button:hover {
+  transform: scale(1.1);
+  background-color: transparent !important;
+}
+
+.task-button:active {
+  transform: none;
+  opacity: 0.8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #root {
+    width: 100%;
+    padding: 2rem;
+  }
+
+  .app {
+    padding: 30px;
+  }
+
+  .header-image {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .app {
+    padding: 20px;
+  }
+
+  button {
+    font-size: 1rem;
+    padding: 8px 12px;
+  }
 }

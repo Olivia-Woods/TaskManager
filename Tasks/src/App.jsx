@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import TaskForm from "./components/TaskForm/TaskForm";
-import TaskList from "./components/TaskList/TaskList";
+import TaskForm from "./components/TaskForm";
+import TaskList from "./components/TaskList";
 import { DragDropContext } from "react-beautiful-dnd";
 import "./styles/App.css";
 
@@ -137,11 +137,7 @@ const App = () => {
   return (
     // Main App Layout
     <div className="app">
-      <img
-        src="../../public/TM.png"
-        alt="Heading Image"
-        style={{ width: "360px", height: "auto" }}
-      />
+      <img className="header-image" src="/tm.png" alt="Heading Image" />
       <div style={{ marginBottom: "20px" }}>
         <TaskForm onAdd={addTask} />
       </div>

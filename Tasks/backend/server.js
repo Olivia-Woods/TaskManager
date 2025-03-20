@@ -9,7 +9,7 @@ const PORT = 5001;
 app.use(cors());
 app.use(bodyParser.json());
 
-// In-memory Array: Store Tasks. This data is lost when the server restarts.
+// In-memory Array: Store Tasks. This data is lost when the server restarts. ** Could Connect to DB **
 let tasks = [];
 
 // Routes

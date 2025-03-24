@@ -16,13 +16,22 @@ A full-stack web application designed for dynamic task management. Built with **
 
 ### Frontend
 
-- **React** (hooks: `useState`, `useEffect`)
-- **CSS** for styling and responsiveness
+- **React.js** – Built using functional components and React Hooks (`useState`, `useEffect`)
+- **Vite** – Modern build tool for lightning-fast development
+- **React Beautiful DnD** – Enables drag-and-drop task reordering
+- **ESLint** – Linter to ensure consistent code quality
+- **CSS** – Used for styling and responsive layout
 
 ### Backend
 
-- **Express.js**
-- **Middleware:** `body-parser`, `cors`
+- **Node.js & Express.js** – Handles routing and CRUD logic for tasks
+- **body-parser** – Middleware for parsing incoming JSON requests
+- **cors** – Middleware to enable frontend-backend communication
+
+### API Testing
+
+- **Postman** – Used for manual testing of API endpoints
+- **cURL** – Command-line tool to test RESTful routes
 
 ## Setup Instructions
 

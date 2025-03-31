@@ -105,5 +105,5 @@ curl -X DELETE http://localhost:5001/tasks/<id>
 
 ## Contact
 
-👩🏽‍💻 **Developer:** Olivia Woods 2025 
+👩🏽‍💻 **Developer:** Olivia Woods 2025<br>
 GitHub: [github.com/Olivia-Woods]

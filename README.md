@@ -103,6 +103,7 @@ curl -X DELETE http://localhost:5001/tasks/<id>
 - **Persistent Storage:** Add database support (MongoDB or PostgreSQL).
 - **User Authentication:** Enable personalised task lists per user.
 
-## Acknowledgments
+## Contact
 
-- Built as part of the IOD course.
+👩🏽‍💻 **Developer:** Olivia Woods 2025 
+GitHub: [github.com/Olivia-Woods]

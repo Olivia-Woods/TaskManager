@@ -162,9 +162,18 @@ ol {
   color: #333;
   margin-left: 10px;
   margin-right: auto;
-  max-width: 80%;
+  max-width: 60%;
   overflow-wrap: break-word;
   line-height: 1.5;
+  text-align: left;
+}
+
+.timestamp {
+  font-size: 0.8rem;
+  color: #666;
+  text-align: right;
+  grid-column: 2 / 3;
+  white-space: nowrap;
 }
 
 .task-item.done .task-text {

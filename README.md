@@ -105,4 +105,5 @@ curl -X DELETE http://localhost:5001/tasks/<id>
 
 ## Contact
 
-- Built as part of the IOD course.
+👩🏽‍💻 **Developer:** Olivia Woods 2025<br>
+GitHub: [github.com/Olivia-Woods]

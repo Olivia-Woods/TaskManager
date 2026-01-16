@@ -1,4 +1,19 @@
 /* Global Styles */
+
+@font-face {
+  font-family: "OpenSauceSans-Light";
+  src: url("/font/OpenSauceSans-Light.ttf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "OpenSauceSans-Regular";
+  src: url("/font/OpenSauceSans-Regular.ttf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +21,7 @@
 }
 
 :root {
-  font-family: "Inter", Arial, sans-serif;
+  font-family: "OpenSauceSans-Regular", Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   background-color: #ffeffc;
@@ -155,6 +170,7 @@ ol {
   flex-wrap: wrap;
   gap: 10px;
   padding-left: 2px;
+  margin-bottom: 16px;
 }
 
 .task-text {
@@ -169,7 +185,7 @@ ol {
 }
 
 .timestamp {
-  font-size: 0.8rem;
+  font-size: 1rem;
   color: #666;
   text-align: right;
   grid-column: 2 / 3;

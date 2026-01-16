@@ -21,6 +21,15 @@ const TaskItem = ({
     setIsEditing(false); // Exits Edit Mode
   };
 
+  const formatTimestamp = (timestamp) => {
+    const date = new Date(timestamp);
+
+    return date.toLocaleDateString("en-AU", {
+      day: "2-digit",
+      month: "short",
+    });
+  };
+
   return (
     <div
       className={`task-item ${task.isDone ? "done" : ""} ${
@@ -44,7 +53,9 @@ const TaskItem = ({
         ) : (
           <>
             <span className="task-text">{task.text}</span>{" "}
-            <small className="timestamp">{task.timestamp}</small>{" "}
+            <small className="timestamp">
+              {formatTimestamp(task.timestamp)}
+            </small>
           </>
         )}
       </div>
@@ -54,19 +65,30 @@ const TaskItem = ({
         <div className="buttons">
           {/* Mark As DONE */}
           <button onClick={onToggleDone} className="done-button">
-            {task.isDone ? "✅" : "✅"}
+            <img
+              src={task.isDone ? "/icons/doneactive.svg" : "/icons/done.svg"}
+              alt="Mark Done"
+            />
           </button>
+
           {/* Toggle Priority */}
           <button onClick={onTogglePriority} className="priority-button">
-            ⭐
+            <img
+              src={
+                task.isPriority ? "/icons/heartactive.svg" : "/icons/heart.svg"
+              }
+              alt="Toggle Priority"
+            />
           </button>
+
           {/* Edit */}
           <button onClick={() => setIsEditing(true)} className="edit-button">
-            ✏️
+            <img src="/icons/edit.svg" alt="Edit Task" />
           </button>
+
           {/* Delete */}
           <button onClick={onDelete} className="delete-button">
-            🗑️
+            <img src="/icons/bin.svg" alt="Delete Task" />
           </button>
         </div>
       )}

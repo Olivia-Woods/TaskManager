@@ -48,7 +48,7 @@ A full-stack web application designed for dynamic task management. Built with **
    ```
 2. **Navigate to the project directory:**
    ```sh
-   cd MiniProject2
+   cd Tasks
    ```
 3. **Install dependencies:**
    ```sh

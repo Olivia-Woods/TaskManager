@@ -2,7 +2,7 @@
 
 ## Overview
 
-A full-stack web application designed for dynamic task management. Built with **React** (frontend) and **Express.js** (backend), this app allows users to **add, edit, prioritise, complete, and delete tasks** effortlessly. It features a **drag-and-drop interface** and a **pink-perfect UI** with a **floating cloud animation** for an enhanced user experience.
+A full-stack web application designed for dynamic task management. Built with **React** (frontend) and **Express.js** (backend), this app allows users to **add, edit, prioritise, complete, and delete tasks** effortlessly. It features a **drag-and-drop interface**, **custom iconography**, and a **pink-perfect UI** with a **floating cloud animation** for an enhanced user experience.
 
 ## Features
 
